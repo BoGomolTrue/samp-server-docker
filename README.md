@@ -2,7 +2,7 @@
 
 This Docker Compose configuration file (docker-compose.yml) allows you to easily set up a multi-container environment with the following services:
 
-- samp-server 0.3.7: A San Andreas Multiplayer server for multiplayer gaming.
+- Samp: A San Andreas Multiplayer server for multiplayer gaming.
 - Redis: An open-source in-memory data structure store used as a database, cache, and message broker.
 - Redis Commander: A web-based management tool for Redis.
 - MySQL: A popular open-source relational database management system.
@@ -17,13 +17,14 @@ This Docker Compose configuration file (docker-compose.yml) allows you to easily
    - Clone this repository to your local machine.
 
 3. Launch the Services:
-   - Run the following command in the terminal in the directory where the docker-compose.yml file is located:
-     
-     docker-compose up
+   - Run the following command in the terminal in the directory where the docker-compose.yml file is located: 
+    ```
+    docker-compose up -d
+    ```
      
 
 4. Accessing Services:
-   - samp-server: Connect your San Andreas Multiplayer game client to the IP and port of the Docker host. Default port : 7777
+   - samp-server: Connect your San Andreas Multiplayer game client to the IP and port of the localhost. Default port : 7777
    - Redis Commander: Access it via http://localhost:7774 (login default credentials: root / (no password)).
    - phpMyAdmin: Access it via http://localhost:7776 (login default credentials: root / root).
    
@@ -104,4 +105,4 @@ networks:
 - For detailed information on configuration options for each service, refer to the official documentation for Docker, Redis, MySQL, and phpMyAdmin.
 - Make sure to secure your services and use strong passwords for MySQL and phpMyAdmin access.
 
-Enjoy your multi-container environment with samp-server 0.3.7, Redis, Redis Commander, MySQL, and phpMyAdmin using Docker Compose! If you have any questions or need further assistance, feel free to reach out.
+Enjoy your multi-container environment with samp-server, Redis, Redis Commander, MySQL, and phpMyAdmin using Docker Compose! If you have any questions or need further assistance, feel free to reach out.

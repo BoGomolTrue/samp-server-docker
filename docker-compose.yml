@@ -1,0 +1,66 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_HOST: 127.0.0.1
+    ports:
+      - 3306:3306
+    networks:
+      - "samp-server-network"
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 7776:80
+    environment:
+      - PMA_ARBITRARY=0
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./scriptfiles/docker/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_PASSWORD=root
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
+    networks:
+      - "samp-server-network"
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      REDIS_HOSTS: redis
+      REDIS_HOST: redis
+      REDIS_PORT: redis:6379
+      REDIS_PASSWORD: 
+      HTTP_USER: root
+      HTTP_PASSWORD: root
+    ports:
+      - 7774:8081
+
+  samp-server:
+    restart: always
+    build:
+      context: .
+      args:
+        SERVER_PATH: ${SERVER_PATH}
+        SERVER_GZ: ${SERVER_GZ}
+    entrypoint: "/start.sh"
+    image: dmolokanov:samp-server
+    ports:
+      - ${EXTERNAL_PORT}:7777/tcp
+      - ${EXTERNAL_PORT}:7777/udp
+    networks:
+      - "samp-server-network"
+networks:
+  samp-server-network:
+    name: samp-server-network
