@@ -29,6 +29,7 @@ This Docker Compose configuration file (docker-compose.yml) allows you to easily
    
 ### Docker Compose File Details
 
+```
 version: '3.1'
 
 services:
@@ -95,7 +96,7 @@ services:
 networks:
   samp-server-net:
     name: samp-server-net
-
+```
 
 ### Additional Information
 
