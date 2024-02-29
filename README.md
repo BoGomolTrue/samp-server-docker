@@ -25,7 +25,7 @@ This Docker Compose configuration file (docker-compose.yml) allows you to easily
 
 4. Accessing Services:
    - samp-server: Connect your San Andreas Multiplayer game client to the IP and port of the localhost. Default port : 7777
-   - Redis Commander: Access it via http://localhost:7774 (login default credentials: root / (no password)).
+   - Redis Commander: Access it via http://localhost:7774 (login default credentials: root / root).
    - phpMyAdmin: Access it via http://localhost:7776 (login default credentials: root / root).
    
 ### Docker Compose File Details
