@@ -25,8 +25,6 @@ services:
     restart: always
     ports:
       - "6379:6379"
-    volumes:
-      - ./scriptfiles/docker/redis/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_PASSWORD=root
       - REDIS_PORT=6379
@@ -55,7 +53,7 @@ services:
         SERVER_PATH: ${SERVER_PATH}
         SERVER_GZ: ${SERVER_GZ}
     entrypoint: "/start.sh"
-    image: dmolokanov:samp-server
+    image: dokersmerk/samp-server:latest
     ports:
       - ${EXTERNAL_PORT}:7777/tcp
       - ${EXTERNAL_PORT}:7777/udp
