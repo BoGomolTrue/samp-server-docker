@@ -85,8 +85,8 @@ services:
     build:
       context: .
       args:
-        APP_ROOT: ${APP_ROOT}
-        TGZ_FILE: ${TGZ_FILE}
+        SERVER_PATH: ${SERVER_PATH}
+        SERVER_GZ: ${SERVER_GZ}
     entrypoint: "/start.sh"
     image: samp-server
     ports:
